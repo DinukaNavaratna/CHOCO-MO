@@ -4,13 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/cart.xml" value="0.19972826086956522" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/ffooter_credit.xml" value="0.20652173913043478" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/footer_contact.xml" value="0.21014492753623187" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/footer_credit.xml" value="0.2" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/header.xml" value="0.21014492753623187" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/header1.xml" value="0.20652173913043478" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/login.xml" value="0.21014492753623187" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/login_register.xml" value="0.20697463768115942" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/products_home.xml" value="0.21014492753623187" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/products_home_card_view.xml" value="0.19972826086956522" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/register.xml" value="0.21014492753623187" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/spalsh_screen.xml" value="0.21014492753623187" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/walkthrough.xml" value="0.19972826086956522" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12604166666666666" />
       </map>
     </option>
   </component>

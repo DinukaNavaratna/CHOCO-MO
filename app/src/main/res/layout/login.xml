@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".Login_Register">
+    android:animateLayoutChanges="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include
-            layout="@layout/header"
+        <fragment
+            android:id="@+id/fragment_header"
+            android:name="com.e_store.Fragments.Header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -47,7 +48,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/logo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ScrollView
@@ -69,7 +70,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:text="Username"
-                            android:textSize="20sp" />
+                            android:textSize="16sp" />
 
                         <EditText
                             android:id="@+id/login_username"
@@ -86,7 +87,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:text="Password"
-                            android:textSize="20sp" />
+                            android:textSize="16sp" />
 
                         <EditText
                             android:id="@+id/login_password1"
@@ -145,7 +146,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
-                                    android:text="Sign up" />
+                                    android:text="Sign up"
+                                    android:textColor="#673AB7"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>

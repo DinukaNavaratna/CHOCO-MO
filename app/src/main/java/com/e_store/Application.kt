@@ -1,0 +1,15 @@
+package com.e_store
+
+import android.app.Application
+
+public lateinit var currentPage: String
+
+class Application: Application() {
+    fun setCurrentPage(page: String) {
+        currentPage = page
+    }
+
+    fun getCurrentPage(): String? {
+        return currentPage
+    }
+}
