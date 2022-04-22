@@ -1,6 +1,8 @@
 package com.e_store.Fragments
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.e_store.*
+import com.e_store.Services.SharedPreference
 
 class Header : Fragment() {
 
@@ -31,6 +35,7 @@ class Header : Fragment() {
         if (header_title == "Login" || header_title == "Register"){
             HeaderRightIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_info_24))
             HeaderRightIcon.setOnClickListener(View.OnClickListener {
+                Toast.makeText(getActivity(), "This app is under development. Please be in touch for updates...", Toast.LENGTH_LONG).show()
             })
         } else {
             HeaderRightIcon.setOnClickListener(View.OnClickListener {
@@ -47,6 +52,8 @@ class Header : Fragment() {
             } else {
                 HeaderLeftIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_person_24))
                 HeaderLeftIcon.setOnClickListener(View.OnClickListener {
+                    var sp = SharedPreference(getActivity())
+                    sp.clearPreference()
                     val intent = Intent(getActivity(), Login::class.java)
                     getActivity()?.startActivity(intent)
                 })

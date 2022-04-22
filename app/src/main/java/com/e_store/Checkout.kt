@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.bumptech.glide.Glide
@@ -43,6 +42,7 @@ class Checkout : AppCompatActivity() {
                 val checkout_payment_option = (findViewById<View>(selectedId) as RadioButton).getText()
 
                 if (checkout_payment_option == "Pay Online") {
+
                 }
 
                 Glide.with(this).load(R.drawable.checkout_success).into(checkout_feedback_image)
