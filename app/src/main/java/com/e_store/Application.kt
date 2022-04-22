@@ -1,6 +1,7 @@
 package com.e_store
 
 import android.app.Application
+import android.content.Context
 
 public lateinit var currentPage: String
 
@@ -11,5 +12,9 @@ class Application: Application() {
 
     fun getCurrentPage(): String? {
         return currentPage
+    }
+
+    fun getContext(): Context {
+        return this.getContext()
     }
 }

@@ -1,6 +1,7 @@
 package com.e_store.Fragments
 
 import android.content.Intent
+import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,16 +34,20 @@ class Header : Fragment() {
             })
         } else {
             HeaderRightIcon.setOnClickListener(View.OnClickListener {
-                val intent = Intent(getActivity(), Login::class.java)
-                intent.putExtra("keyIdentifier", "value")
+                val intent = Intent(getActivity(), Cart::class.java)
                 getActivity()?.startActivity(intent)
             })
 
+            HeaderLeftIcon.visibility = View.VISIBLE
             if(header_title != "Home"){
-                HeaderLeftIcon.visibility = View.VISIBLE
+                HeaderLeftIcon.setOnClickListener(View.OnClickListener {
+                    val intent = Intent(getActivity(), Products_Home::class.java)
+                    getActivity()?.startActivity(intent)
+                })
+            } else {
+                HeaderLeftIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_person_24))
                 HeaderLeftIcon.setOnClickListener(View.OnClickListener {
                     val intent = Intent(getActivity(), Login::class.java)
-                    intent.putExtra("keyIdentifier", "value")
                     getActivity()?.startActivity(intent)
                 })
             }

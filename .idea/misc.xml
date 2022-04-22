@@ -5,7 +5,13 @@
       <map>
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/cart.xml" value="0.19972826086956522" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/cart__summary.xml" value="0.19610507246376813" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/cart_card_view.xml" value="0.19972826086956522" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/checkout.xml" value="0.19610507246376813" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/checkout_failed.xml" value="0.19610507246376813" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/checkout_success.xml" value="0.19610507246376813" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/ffooter_credit.xml" value="0.20652173913043478" />
+        <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/footer__menu.xml" value="0.19610507246376813" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/footer_contact.xml" value="0.21014492753623187" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/footer_credit.xml" value="0.2" />
         <entry key="..\:/Freelance/e-Store/app/src/main/res/layout/header.xml" value="0.21014492753623187" />
