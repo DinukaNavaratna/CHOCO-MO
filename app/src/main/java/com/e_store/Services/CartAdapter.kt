@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.e_store.R
+import com.squareup.picasso.Picasso
 
 class CartAdapter(val context: Context) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
@@ -28,9 +29,9 @@ class CartAdapter(val context: Context) : RecyclerView.Adapter<CartAdapter.ViewH
 
         val cart_item_string = cart_list[position]
         try {
-            var cart_item = cart_item_string.split(":").toTypedArray()
+            var cart_item = cart_item_string.split("^").toTypedArray()
 
-            holder.imageView.setImageResource(cart_item[0].toInt())
+            Picasso.get().load(cart_item[0]).into(holder.imageView);
             holder.product_name.text = cart_item[1]
             holder.product_price.text = "රු " + cart_item[2]
         } catch (e: Exception) {

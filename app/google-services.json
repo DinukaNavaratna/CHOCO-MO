@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1006887775677",
+    "project_id": "chocomo-71408",
+    "storage_bucket": "chocomo-71408.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006887775677:android:7c0a80ac4e8b029f7a76d4",
+        "android_client_info": {
+          "package_name": "com.e_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006887775677-46ice1nh5mafjf3n344f54p6836nfjj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm_Bzx7f82xwUHHU6kxw4dBmQbKb_N3Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006887775677-46ice1nh5mafjf3n344f54p6836nfjj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

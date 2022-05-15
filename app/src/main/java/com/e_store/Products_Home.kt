@@ -1,67 +1,112 @@
 package com.e_store
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.util.Log
 import android.widget.ScrollView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.e_store.Services.CustomAdapter
 import com.e_store.Services.ItemsViewModel
+import com.e_store.Services.Pop_Alert
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class Products_Home : AppCompatActivity() {
+
+    // ArrayList of class ItemsViewModel
+    val data_1 = ArrayList<ItemsViewModel>()
+    val data_2 = ArrayList<ItemsViewModel>()
+    val db = Firebase.firestore
+    lateinit var products_home_scroll_view: ScrollView
+    lateinit var product_list_1: RecyclerView
+    lateinit var product_list_2: RecyclerView
+    lateinit var popAlert: Pop_Alert
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         currentPage = "Home"
         setContentView(R.layout.products_home)
 
-        val products_home_scroll_view = findViewById<ScrollView>(R.id.products_home_scroll_view)
-        val men_product_list = findViewById<RecyclerView>(R.id.men_product_list)
-        val women_product_list = findViewById<RecyclerView>(R.id.women_product_list)
+        popAlert = Pop_Alert(this, this)
+
+        products_home_scroll_view = findViewById<ScrollView>(R.id.products_home_scroll_view)
+        product_list_1 = findViewById<RecyclerView>(R.id.product_list_1)
+        product_list_2 = findViewById<RecyclerView>(R.id.product_list_2)
 
         // this creates a vertical layout Manager
-        men_product_list.layoutManager = LinearLayoutManager(this)
-        women_product_list.layoutManager = LinearLayoutManager(this)
+        product_list_1.layoutManager = LinearLayoutManager(this)
+        product_list_2.layoutManager = LinearLayoutManager(this)
 
-        men_product_list.apply {
+        product_list_1.apply {
             layoutManager = GridLayoutManager(this.context, 2)
         }
-        women_product_list.apply {
+        product_list_2.apply {
             layoutManager = GridLayoutManager(this.context, 2)
         }
+        getProductList1()
 
-        // ArrayList of class ItemsViewModel
-        val men_data = ArrayList<ItemsViewModel>()
-        val women_data = ArrayList<ItemsViewModel>()
+        var swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener {
+            finish();
+            startActivity(intent);
+        }
+    }
 
-        // Add data to list
-        men_data.add(ItemsViewModel(R.drawable.men_1, "PALMERS Hair Food Formula 150gm", "3,250.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_2, "Cocoa Stretch Mark Cream – 125gm", "3,250.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_3, "Cocoa Stretch Mark Lotion – 250ml", "2,650.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_4, "Cocoa Skin Therapy Oil Roship fragrance 25ml", "855.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_5, "Cocoa Body Lotion MEN / Pump 400ml", "3,950.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_2, "Cocoa Stretch Mark Cream – 125gm", "3,250.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_3, "Cocoa Stretch Mark Lotion – 250ml", "2,650.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_4, "Cocoa Skin Therapy Oil Roship fragrance 25ml", "855.00"))
-        men_data.add(ItemsViewModel(R.drawable.men_5, "Cocoa Body Lotion MEN / Pump 400ml", "3,950.00"))
+    fun getProductList1(){
+        db.collection("Products")
+            .whereEqualTo("category", "Offer")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(TAG, "Offer Name => ${document.data["name"]}")
+                    data_1.add(ItemsViewModel(document.data["image"].toString(), document.data["name"].toString(), document.data["price"].toString()))
+                }
+                getProductList2()
+            }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Error getting documents: ", exception)
+                popAlert.showAlert("Opzzz!", "Offer product loading failed", false, null)
+                getProductList2()
+            }
+    }
 
-        women_data.add(ItemsViewModel(R.drawable.women_1, "PALMERS Coconut Oil Shampoo 400ml", "3,950.00"))
-        women_data.add(ItemsViewModel(R.drawable.women_2, "PALMERS Cocoa Butter Body Lotion 400ml", "4,950.00"))
-        women_data.add(ItemsViewModel(R.drawable.women_3, "Coconut Oil Moisture Gro 150g", "2,950.00"))
-        women_data.add(ItemsViewModel(R.drawable.women_4, "EGYPTIAN MAGIC 30+ Age Miracle Cream 38ml (Egypt)", "4,700.00"))
+    fun getProductList2(){
+        db.collection("Products")
+            .whereNotEqualTo("category", "Offer")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(TAG, "Product Name => ${document.data["name"]}")
+                    data_2.add(ItemsViewModel(document.data["image"].toString(), document.data["name"].toString(), document.data["price"].toString()))
+                }
+                loadProducts()
+            }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Error getting documents: ", exception)
+                popAlert.showAlert("Opzzz!", "All products loading failed", false, null)
+                loadProducts()
+            }
+    }
 
-        // This will pass the ArrayList to our Adapter
-        val men_adapter = CustomAdapter(men_data, this)
-        val women_adapter = CustomAdapter(women_data, this)
+    fun loadProducts(){
+        if(data_1.count() == 0 && data_2.count() == 0){
+            popAlert.showAlert("Opzzz!", "Product list is empty", false, null)
+        } else {
+            // This will pass the ArrayList to our Adapter
+            val adapter_1 = CustomAdapter(data_1, this)
+            val adapter_2 = CustomAdapter(data_2, this)
 
-        // Setting the Adapter with the recyclerview
-        men_product_list.adapter = men_adapter
-        women_product_list.adapter = women_adapter
+            // Setting the Adapter with the recyclerview
+            product_list_1.adapter = adapter_1
+            product_list_2.adapter = adapter_2
 
-        //products_home_scroll_view.fullScroll(ScrollView.FOCUS_UP)
-        products_home_scroll_view.smoothScrollTo(0,0)
+            //products_home_scroll_view.fullScroll(ScrollView.FOCUS_UP)
+            products_home_scroll_view.smoothScrollTo(0, 0)
+        }
     }
 }

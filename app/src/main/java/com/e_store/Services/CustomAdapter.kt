@@ -12,6 +12,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.recyclerview.widget.RecyclerView
 import com.e_store.R
+import com.squareup.picasso.Picasso
 import java.util.logging.Level.INFO
 
 class CustomAdapter(private val mList: List<ItemsViewModel>, val context: Context) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -32,15 +33,15 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, val context: Contex
 
         val ItemsViewModel = mList[position]
         Log.i("Items", position.toString()+" | "+ItemsViewModel.name+" | "+ItemsViewModel.price)
-        holder.imageView.setImageResource(ItemsViewModel.image)
+        Picasso.get().load(ItemsViewModel.image).into(holder.imageView);
         holder.product_name.text = ItemsViewModel.name
         holder.product_price.text = "රු "+ItemsViewModel.price
         holder.add_to_cart.setOnClickListener(View.OnClickListener {
             var cart_list = sp.getPreference("cart_list")
             if(cart_list == null){
-                cart_list = Integer.toString(ItemsViewModel.image)+":"+ItemsViewModel.name+":"+ItemsViewModel.price
+                cart_list = ItemsViewModel.image+"^"+ItemsViewModel.name+"^"+ItemsViewModel.price
             } else {
-                cart_list += "|"+Integer.toString(ItemsViewModel.image)+":"+ItemsViewModel.name+":"+ItemsViewModel.price
+                cart_list += "|"+ItemsViewModel.image+"^"+ItemsViewModel.name+"^"+ItemsViewModel.price
             }
             sp.setPreference("cart_list", cart_list)
             var cart_total_value_string = sp.getPreference("cart_total")

@@ -75,17 +75,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Username"
+                            android:text="Email"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <EditText
-                            android:id="@+id/login_username"
+                            android:id="@+id/login_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textWebEmailAddress" />
 
                         <TextView
                             android:id="@+id/textView2"

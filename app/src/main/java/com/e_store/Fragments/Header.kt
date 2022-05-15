@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.e_store.*
 import com.e_store.Services.SharedPreference
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class Header : Fragment() {
 
@@ -54,6 +56,7 @@ class Header : Fragment() {
                 HeaderLeftIcon.setOnClickListener(View.OnClickListener {
                     var sp = SharedPreference(getActivity())
                     sp.clearPreference()
+                    Firebase.auth.signOut()
                     val intent = Intent(getActivity(), Login::class.java)
                     getActivity()?.startActivity(intent)
                 })
