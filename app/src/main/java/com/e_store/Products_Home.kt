@@ -39,6 +39,7 @@ class Products_Home : AppCompatActivity() {
         product_list_2 = findViewById<RecyclerView>(R.id.product_list_2)
 
         // this creates a vertical layout Manager
+        object : LinearLayoutManager(this){ override fun canScrollVertically(): Boolean { return false } }
         product_list_1.layoutManager = LinearLayoutManager(this)
         product_list_2.layoutManager = LinearLayoutManager(this)
 

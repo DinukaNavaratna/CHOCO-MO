@@ -136,6 +136,7 @@ class Checkout : AppCompatActivity() {
         checkout_feedback.visibility = View.VISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(intent1)
+            finish()
         }, 10000)
     }
 }

@@ -30,7 +30,6 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_header">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/swipeContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -85,7 +84,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/product_list_1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:nestedScrollingEnabled="false" />
 
@@ -112,7 +111,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/product_list_2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:nestedScrollingEnabled="false" />
 

@@ -50,7 +50,7 @@ class Register : AppCompatActivity() {
             if(username == "" || email == "" || password1 == "" || password2 == ""){
                 popAlert.showAlert("Opzzz!", "All the fields should be filled properly", false, null)
             }
-            else if(password1.length > 5){
+            else if(password1.length < 5){
                 popAlert.showAlert("Opzzz!", "Password must have at least 6 characters", false, null)
             }
             else if(password1 != password2){

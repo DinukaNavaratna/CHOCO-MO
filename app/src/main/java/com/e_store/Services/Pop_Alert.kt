@@ -21,6 +21,7 @@ class Pop_Alert(context: Context, activity: Activity) {
                 dialog.dismiss()
                 if(redirect) {
                     context.startActivity(intent);
+                    activity.finish()
                 }
             }
             .build().show()
