@@ -15,3 +15,6 @@ This is a simple Android mobile application for an online store including the fe
 ![Dinuka Navaratna - CHOCO-MO 10](https://user-images.githubusercontent.com/26020039/172056400-14fed413-62ad-4f91-b23f-c8969ccadb6a.jpeg)
 ![11](https://user-images.githubusercontent.com/26020039/172056403-fce7589b-6546-4c34-bb06-a1878f7e872e.jpeg)
 ![Dinuka Navaratna - CHOCO-MO 12](https://user-images.githubusercontent.com/26020039/172056405-56ffee47-eb0d-4638-8aa6-56eff6808e94.jpeg)
+
+![Products](https://user-images.githubusercontent.com/26020039/179680470-b8fb1cc0-e40f-405d-b8c8-14f08b6e97f7.PNG)
+![Orders](https://user-images.githubusercontent.com/26020039/179680484-4ef98d76-1157-4856-bc80-ddd6f0a7ca67.PNG)
